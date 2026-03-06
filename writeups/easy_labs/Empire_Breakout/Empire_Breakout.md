@@ -8,7 +8,7 @@ First things first, we open our cmd and start with a ping sweep to get an idea o
 ```
 nmap -sn 192.168.1.0/24
 ```  
-![Nmap scan](Evidence/PingSweepNmap.png)
+![Nmap scan](Evidence/PingSweepNmapUpdated.png)
   
 As the target machine is on the local network, it is easy to identify, thanks to also the host name being "VMWare"  
 Here we acquire the important information that our target is located at the IP: 192.168.1.54.  
@@ -195,6 +195,7 @@ Here I use John the Ripper and rockyou.txt to bruteforce the hash, which, due to
 
 And here ends our journey in hacking this box!
 Hope this was useful!
+
 
 
 
