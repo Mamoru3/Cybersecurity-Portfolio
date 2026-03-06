@@ -6,7 +6,7 @@ After downloading and opening the box from vulnhub : https://www.vulnhub.com/ent
 First things first, we open our cmd and start with a ping sweep to get an idea of who is alive on our network without causing too much network noise.
   
 ```
-nmap -sn --open 192.168.1.0/24
+nmap -sn 192.168.1.0/24
 ```  
 ![Nmap scan](Evidence/PingSweepNmap.png)
   
@@ -195,6 +195,7 @@ Here I use John the Ripper and rockyou.txt to bruteforce the hash, which, due to
 
 And here ends our journey in hacking this box!
 Hope this was useful!
+
 
 
 
