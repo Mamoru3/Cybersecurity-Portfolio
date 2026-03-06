@@ -14,7 +14,8 @@ This repository is my cybersecurity learning portfolio, where you can find usefu
 - **Templates:** reporting formats I use for consistent documentation
 
 ## **Side Note**
-The notes above reachable are not extended and are not at all complete. I have written a 128 pages long (as complete as I could) cheatsheet, but for obvious reasons, I can not leave it here. If interested, reach me at my email and I will be more than happy to send it.
+The notes above reachable are not extended and are not at all complete. I have written a 128 pages long (as complete as I could) cheatsheet, but for obvious reasons, I can not leave it here. If interested, reach me at my email and I will be more than happy to send it.  
+Most of the easy machines I am targeting are self hosted using VMWare, hence why some local IPs might be seen. This will not be the case from medium level on for a "more realistic" methodology
 
 ## Contact
 If you have questions or want to connect, feel free to open an issue and I will respond as soon as possible. Alternatively, you can reach me at alessandro.loddo.99@gmail.com
