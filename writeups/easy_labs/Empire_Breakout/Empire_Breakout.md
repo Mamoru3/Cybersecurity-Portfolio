@@ -16,7 +16,7 @@ Here we acquire the important information that our target is located at the IP: 
 ![Target found ping sweep](Evidence/TargetPingSweep.png)  
 
 Finally we can run a more targeted scan on the target IP.
-
+  
 ```
 nmap -sS -sV -p- -T4 --open 192.168.1.54
 ```  
@@ -24,7 +24,7 @@ This nmap scan shows which ports are open and which services/versions are runnin
   
 ![Target found ping sweep](Evidence/nmapss-sv_scan.png) 
 
-The ports that we have open and the services running are:
+The ports that are open and the services running on the target machine are:
 - 80: running http, more specifically Apache 2.4.51
 - 139/445: Samba smbd 4
 - 10000: Miniserv 1.981
@@ -44,7 +44,7 @@ Here I am welcomed by a default Debian page, which, apart from hinting to poor h
 I decide to go further with the web page enumeration and open gobuster trying to find subdirectories.
 ```  
 gobuster dir 192.168.1.54 -w /usr/share/wordlists/dirb.common.txt
-```
+```  
 ![Debian Page](Evidence/Gobuster_scan.png)
 
 The result does not give much direction, revealing a manual page and the index.html page.
@@ -74,7 +74,7 @@ I start to enumerate the SMB ports using smbmap, a go-to tool for a first mappin
 smbmap -H 192.168.1.54
 ```  
 ![smbmap](Evidence/smbmap.png)  
-A straightforward output gives us the valuable information that two sessions are opened in the target machine SMB service, both with no access permission
+A straightforward output gives us the valuable information that two sessions are opened in the target machine SMB service, both with no access permission.
 ```
 IPC
 print
@@ -86,7 +86,7 @@ enum4linux -a 192.168.1.54
 Enum4linux comes back with information of great value, two domains are present on the target machine:
 - Breakout
 - Builtin
-We also seethat the target machine allows for sessions using username and password.
+We also see that the target machine allows for sessions using username and password.
 ![enum4client](Evidence/enum4client_domains.png)
 
 The biggest find is definitely that the enum4linux lists the Unix user of the target machine: 
@@ -96,12 +96,12 @@ cyber
 This could hint to a potential username, granting us a possible login in one of the two ports that host the web service service.
   
 ![enum4client](Evidence/cyberusernamefound.png)
-
+  
 Not as fortunate, the search for Samba 4.13 did not bring much information, listing a possible pipe exploit, which would turn out to be a maybe too complex and unstable solution, as well as having requirements that we are not sure are being met.  
 ![SambaExploit](Evidence/samba_pipename_exploit.png) 
 ![SambaRequirements](Evidence/Samba_Exploit_Web_Find.png)  
 
-Having a possible username and password combination, I decide to move onto port 10000 and 20000
+Having a possible username and password combination, I decide to move onto port 10000 and 20000.
 ```
 cyber
 .2uqPEfj3D<P'a-3
@@ -112,14 +112,14 @@ Given that we also have the specific version of the services
 ```
 10000 Webmin 1.981
 20000 Usermin 1.830
-```
+```  
 I decide to run Nuclei as well, which comes back with no obvious exploits for these two versions of the web services.  
 
 I open both the pages, and see the two Usermin and Webmin login forms.  
 ![Webmin](Evidence/webmin_loginpage.png)
 ![Usermin](Evidence/usermin_loginpage.png)  
 
-On the Usermin page I try  
+On the Usermin page I try:  
 ```
 Username: cyber
 Password: .2uqPEfj3D<P'a-3
@@ -195,6 +195,7 @@ Here I use John the Ripper and rockyou.txt to bruteforce the hash, which, due to
 
 And here ends our journey in hacking this box!
 Hope this was useful!
+
 
 
 
