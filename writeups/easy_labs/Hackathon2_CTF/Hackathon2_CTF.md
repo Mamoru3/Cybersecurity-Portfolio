@@ -29,7 +29,7 @@ The scan shows that port 21 and port 80 are open, with respectively
 - Port 21 runs FTP using usftpd 3.0.3.
 - Port 80 runs http using Apache httpd 2.4.41 on Ubuntu.
   
-My first idea is to first try to connect to FTP for a quick test to FTP
+My first idea is to first try to connect to FTP for a quick test.
 ```bash
 ftp 192.168.1.52
 ```
@@ -39,7 +39,7 @@ I immediately run an "ls" to see what files are available through ftp.
 
 ![ftp login](Evidence/FTP_Connection_Login.png)
   
-Here we see two files available "flag1.txt" and "word.dir", which I immediately get running the known ftp commands.
+Here we see two files available "flag1.txt" and "word.dir", which I immediately get by running the known ftp commands.
 ```bash
 get flag1.txt
 get word.dir
@@ -71,12 +71,12 @@ And we are now in the web page, which does not contain much.
   
 ![webpage](Evidence/Web_Page_Port_80.png)
   
-Here,as always with web pentesting, we have different tools in our hands.  
+Here, with web pentesting, we have different tools in our hands.  
 I decide to run gobuster to check if there are subdirectories using the dirb/big_wordlist using the command  
-```bash
+```
 gobuster dir -u http://192.168.1.52:80/ -w /usr/share/wordlists/dirb/big.txt
 ```
-And obtained good results.  
+And obtained some interesting results.  
 ![gobuster dirb wordlist](Evidence/Gobuster_big_dirb_wordlist.png)
 
 I open robots.txt in the webpage.  
@@ -89,7 +89,7 @@ Which does not contain interesting text, even inspecting with the browser inspec
 
 I then decide to open the "happy" page, which, on the other hand, proves to be very interesting.  
 
-```bash
+```
 http://192.168.1.52:80/happy
 ```
 The page really deceivigly says that "Nothing is here", but after browser inspection, we notice that a comment gives out the username: hackathonll. 
@@ -97,13 +97,14 @@ The page really deceivigly says that "Nothing is here", but after browser inspec
 ![happy page](Evidence/Happy_Page_Inspection.png)  
 
 Confused on the absence of a login page or login service, after way too many minutes I realise that my first scan was not complete and decide to run a full port scan with nmap.
-```bash
+```
 nmap -p- -T4 192.168.1.52
 ```  
-
+![nmapfullscan](Evidence/Evidence/Full_Nmap_Scan.png.png)
+  
 Which reveals port 7223 open, where OpenSSH is running.  
 We have a username and a list of passwords, so it is time to bruteforce with hydra.  
-```bash
+```
 hydra -l hackathonll -P word.dir 192.168.1.52 -s 7223 ssh
 ```
 Which returned a positive result.
@@ -113,7 +114,7 @@ Which returned a positive result.
 Username: hackathonll Password: Ti@gO
 
 I SSH successfully and run some enumeration to start thinking about the Privilege Escalation section to be able to root into the machine, so I decide to run some commands to see the OS and linux Kernel, not finding any exploits for them.  
-```bash
+```
 cat /etc/issue
 uname -i
 ```  
@@ -124,7 +125,7 @@ Finally I run sudo -l and to my surprise I see that /usr/bin/vim can be sudoed w
 ![sudo -l](Evidence/sudo-l.png)
   
 We proceed by running the following command:  
-```bash
+```
 sudo /usr/bin/vim
 ```  
 And from the vim we can escalate to root.  
@@ -141,3 +142,4 @@ cat /root/flag2.txt
 ![final who am i and cat](Evidence/Final_WhoAmI_And_cat.png)  
 
 This marks the end of this box, which has reminded me to follow the most important rule of pentesting, good enumeration is essential not to get lost later on.
+
