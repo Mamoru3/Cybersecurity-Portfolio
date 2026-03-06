@@ -100,7 +100,7 @@ Confused on the absence of a login page or login service, after way too many min
 ```
 nmap -p- -T4 192.168.1.52
 ```  
-![nmapfullscan](Evidence/Evidence/Full_Nmap_Scan.png)
+![nmapfullscan](Evidence/Full_Nmap_Scan.png)
   
 Which reveals port 7223 open, where OpenSSH is running.  
 We have a username and a list of passwords, so it is time to bruteforce with hydra.  
@@ -142,5 +142,6 @@ cat /root/flag2.txt
 ![final who am i and cat](Evidence/Final_WhoAmI_And_cat.png)  
 
 This marks the end of this box, which has reminded me to follow the most important rule of pentesting, good enumeration is essential not to get lost later on.
+
 
 
