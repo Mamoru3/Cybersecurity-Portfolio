@@ -6,8 +6,8 @@ Let's start.
   
 After downloading and opening the box from vulnhub : https://www.vulnhub.com/entry/hackathonctf-2,714/ , we launch it and log into our machine.  
   
-Here we run a TCP null scan to get an idea of who is on the network. 
-```bash
+Here we run a TCP null scan on the network.
+```  
 nmap -sN 192.168.1.0/24 
 ``` 
 
@@ -142,6 +142,7 @@ cat /root/flag2.txt
 ![final who am i and cat](Evidence/Final_WhoAmI_And_cat.png)  
 
 This marks the end of this box, which has reminded me to follow the most important rule of pentesting, good enumeration is essential not to get lost later on.
+
 
 
 
