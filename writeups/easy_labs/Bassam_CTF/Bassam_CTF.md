@@ -12,7 +12,7 @@ nmap -sn 192.168.1.0/24
 As the target machine is on the local network, it is easy to identify, thanks to also the host name being "VMWare"  
 Here we acquire the important information that our target is located at the IP: 192.168.1.55.  
   
-![Target found ping sweep](Evidence/TargetPingSweep.png)  
+![Target found ping sweep](Evidence/target_found.png)  
 
 Finally we can run a more targeted scan on the target IP.
   
@@ -42,5 +42,6 @@ In this case the curl does not show anything apart form "Bassam.ctf", which is p
 I go then into my /etc/hosts and add bassam.ctf as a host for the 192.168.1.55 address.
   
 ![host added](Evidence/virtual_host_added.png) 
+
 
 
