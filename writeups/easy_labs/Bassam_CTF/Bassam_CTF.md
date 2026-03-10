@@ -45,6 +45,13 @@ I go then into my /etc/hosts and add bassam.ctf as a host for the 192.168.1.55 a
 
 Now by curling bassam.ctf, we get the message "Welcome to my blog"
 
-![host added](Evidence/virtual_host_added.png) 
+![host added](Evidence/welcome_to_my_blog.png)  
+
+By opening the browser and searching 
+```
+http://192.168.1.55:80
+```
+We get to an empty web page,
+![Web Page](Evidence/blank_page.png)  
 
 
