@@ -19,7 +19,7 @@ Finally we can run a more targeted scan on the target IP.
 ```
 nmap -sS -sV -p- -T4 --open 192.168.1.55
 ```
-![Nmap accurate scan](Evidence/accurate_scan.png)
+![Nmap accurate scan](Evidence/accurate_scan.png)  
 This nmap scan shows which ports are open and which services/versions are running on these ports.
   
 ![Result accurate scan](Evidence/accurate_scan_result.png) 
@@ -53,5 +53,6 @@ http://192.168.1.55:80
 ```
 We get to an empty web page,
 ![Web Page](Evidence/blank_page.png)  
+
 
 
