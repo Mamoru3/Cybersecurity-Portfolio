@@ -6,6 +6,7 @@ This index contains different lab reports I have done, cathegorised by difficult
 - Easy
   - [Hackathon2](easy_labs/Hackathon2_CTF/Hackathon2_CTF.md)
   - [Empire Breakout](easy_labs/Empire_Breakout/Empire_Breakout.md)
+  - [Bassam_CTF](easy_labs/Bassam_CTF/Bassam_CTF.md)
 - Medium
 - Hard
 - Real World
