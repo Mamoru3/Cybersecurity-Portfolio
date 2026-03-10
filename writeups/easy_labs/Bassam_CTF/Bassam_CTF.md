@@ -26,7 +26,7 @@ This nmap scan shows which ports are open and which services/versions are runnin
 
 The ports that are open are only two, and the services running on the target machine are:
  - 22 SSH OpenSSH 7.6p1 Ubuntu
- - 80 http Apache httpd 2.4.29
+ - 80 http Apache httpd 2.4.29  
 Immediately from the result of the scan we can have an idea of the enumeration and possible exploitation approach.
 There will be some sort of web application, through which we will hopefully be able to gain credentials to either bruteforce or normally login into SSH.
 
@@ -53,6 +53,7 @@ http://192.168.1.55:80
 ```
 We get to an empty web page,
 ![Web Page](Evidence/blank_page.png)  
+
 
 
 
