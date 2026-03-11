@@ -152,9 +152,71 @@ sudo -l
 To see my current privileges.
   
 After some bottomless system exploration, I see a "PassProgram" folder in the root folder.
+  
+![passprogramfolderfound](Evidence/pass_program_find.png)
+  
+This folder contains an encoder and decoder, which will be probably useful for a password or text of some kind.  
+After some more system digging, I reach the "var" folder, and see a "MySecretPassword" file, which I decode using the previous decoder 
+  
+![decodedpassword](Evidence/Decoded_Password.png)
 
-![passprogramfolderfound](pass_program_find.png)
+An important detail is that during my exploration, I found three users:
+- test
+- kira
+- bassam
+So I assume this password is for either kira or bassam.
+```
+Username: kira
+Password: kira2003
+```
+  
+After trying it for kira, I managed to switch user and go one level deeper.
+  
+![kirareached](Evidence/Kira_reached.png)
 
+In kira I immediately run "sudo -l" again and we can now see some files that we can run, one of them is "test.sh".  
+  
+![kiralsudo](Evidence/kira_sudo-l.png)
+  
+This is the part of this escalation that took me the longest.  
+What this file does, is that it executes a command as bassam, therefore i run:
+```
+sudo -u bassam ./test.sh bash
+```
+Where bash becomes the first argument to the script, and therefore opens a new bash as bassam.
 
+We now run sudo-l and see that we are in fact now bassam, and that we can execute down.sh as root, one level closer to root.
+  
+![bassamshell](Evidence/bassam_shell.png)
+  
+By catting this down.sh file, we discover our way to root this machine.
+  
+![downshcat](Evidence/down_sh_cat.png)
 
+What this file does is it curls at "http://mywebsite.test/script.sh" and executes it as root.  
+
+The solution I found is to create a samely named compromised file and somehow make it execute from this bash.  
+Very important is to note that the file is executed by the "mywebsite.test" host, so we need to check the hosts of the target machine and update them adding this mywebsite.test and link it to our IP address. So the target machine will execute this file from our machine.
+  
+![downshcat](Evidence/kali_added.png)
+  
+Moving to our machine, I create a script.sh that should technically launch a bash as root.
+```
+echo '#!/bin/bash' > script.sh
+echo '/bin/bash -p' >> script.sh
+```
+when script.sh is run by a privileged process, /bin/bash -p spawns a bash shell that preserves the elevated privileges (-p disables the effective UID reset). This is a common technique when you find a writable script that gets executed as root.
+
+This however did not work, so I try to opt for a reverse shell approach.
+
+I use netcat on my attacking machine to listen to port 8090.
+```
+nc -lnvp -8090
+```
+And I edited my script.sh to spawn a reverse shell to port 8090.  
+The setup can be fully seen down here.
+![downshcat](Evidence/reverse_shell.png) Reverse shell in script.sh
+![downshcat](Evidence/overall_setup_reverse_shell.png) Reverse shell setup  
+
+And just like this, we can see that we are now root in the target machine, reaching the end of the exploitation of this box.
 
