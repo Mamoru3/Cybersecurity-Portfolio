@@ -4,7 +4,10 @@ Hello dear visitor!
 This repository is my cybersecurity learning portfolio, where you can find useful resources that will hopefully also help you.
 
 ## Start here
-- **Notes / Wiki:** [My Shortened Cybersecurity Notes](notes/pentesting-shortened-notes-readme.md) , [Linux Essentials for Cybersecurity](notes/linux-essentials-for-pentesting-readme.md)
+- **Notes / Wiki:**
+    - [My Shortened Cybersecurity Notes](notes/pentesting-shortened-notes-readme.md)
+    - [Linux Essentials for Cybersecurity](notes/linux-essentials-for-pentesting-readme.md)
+    - [How the Internet works](notes/How-the-Internet-works.md)
 - **Lab Writeups:** [Writeups Index](writeups/labs-readme.md)
 - **Templates:** [My Templates](templates/templates-readme.md)
 
