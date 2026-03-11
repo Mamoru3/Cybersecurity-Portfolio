@@ -7,7 +7,7 @@ This repository is my cybersecurity learning portfolio, where you can find usefu
 - **Notes / Wiki:**
     - [My Shortened Cybersecurity Notes](notes/pentesting-shortened-notes-readme.md)
     - [Linux Essentials for Cybersecurity](notes/linux-essentials-for-pentesting-readme.md)
-    - [How the Internet works](notes/How-the-Internet-works.md)
+    - [How the Internet works](notes/how-the-internet-works.md)
 - **Lab Writeups:** [Writeups Index](writeups/labs-readme.md)
 - **Templates:** [My Templates](templates/templates-readme.md)
 
