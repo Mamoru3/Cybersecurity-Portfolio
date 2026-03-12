@@ -66,10 +66,10 @@ We get to a white page that welcomes us to the main blog "Welcome to my blog".
 Here I decide to choose the path to try to find other possible subdirectories and go deeper in the enumeration.  
 I open gobuster and run a search on the possible existing subdirectories.
 ```
-gobuster dir -u http://bassam.ctf -x php, lua, hmtl, txt -w "wordlist.txt"
+gobuster dir -u http://bassam.ctf -x php,lua,hmtl,txt -w "wordlist.txt"
 ```  
 
-Whilst I was hopeful to find existing subdirectories that would give me a clear path, no subdirectories were found other than "index.html".
+While I was hopeful to find existing subdirectories that would give me a clear path, no subdirectories were found other than "index.html".
   
 ![gobuster search ](Evidence/result_gobuster_scan.png)  
   
@@ -88,6 +88,9 @@ A huge list of possible exploits comes out, requiring some time to research them
 In this very moment I thought that there would be more to a blog than just a welcoming page.
 
 Here I run the Vhost discovery with ffuf.
+```
+ffuf -u http://bassam.ctf -H "Host: FUZZ.bassam.ctf" -w wordlist.txt -fc 404
+```
   
 ![ffuf subdomain scan](Evidence/ffuf_discovery.png)
   
@@ -119,6 +122,8 @@ Upon opening "http://welcome.bassam.ctf/index.php we are welcomed by a white pag
 ![gobuster last scan](Evidence/config_php_in_field.png)
 
 Upon opening, the file revealed a username and password, giving me a path to try in port 22 for the SSH service to establish a connection with the machine.
+This is a common misconfiguration where developers leave database 
+credentials in publicly accessible files.
   
 ![gobuster last scan](Evidence/credentials.png)
 
@@ -183,8 +188,11 @@ What this file does, is that it executes a command as bassam, therefore i run:
 ```
 sudo -u bassam ./test.sh bash
 ```
-Where bash becomes the first argument to the script, and therefore opens a new bash as bassam.
-
+The script has unquoted variable expansion: 
+        ./test.sh runs: echo $name
+        By passing 'bash', we inject bash as a command
+        Vulnerable line: echo $name (should be echo "$name")
+  
 We now run sudo-l and see that we are in fact now bassam, and that we can execute down.sh as root, one level closer to root.
   
 ![bassamshell](Evidence/bassam_shell.png)
@@ -195,7 +203,7 @@ By catting this down.sh file, we discover our way to root this machine.
 
 What this file does is it curls at "http://mywebsite.test/script.sh" and executes it as root.  
 
-The solution I found is to create a samely named compromised file and somehow make it execute from this bash.  
+The solution I found is to create an identically named malicious file and somehow make it execute from this bash.  
 Very important is to note that the file is executed by the "mywebsite.test" host, so we need to check the hosts of the target machine and update them adding this mywebsite.test and link it to our IP address. So the target machine will execute this file from our machine.
   
 ![downshcat](Evidence/kali_added.png)
@@ -207,8 +215,8 @@ echo '/bin/bash -p' >> script.sh
 ```
 when script.sh is run by a privileged process, /bin/bash -p spawns a bash shell that preserves the elevated privileges (-p disables the effective UID reset). This is a common technique when you find a writable script that gets executed as root.
 
-This however did not work, so I try to opt for a reverse shell approach.
-
+This didn't work because curl pipes to bash in a non-interactive context, so /bin/bash -p exits immediately. A reverse shell creates a persistent TCP connection, giving us an interactive root shell.  
+  
 I use netcat on my attacking machine to listen to port 8090.
 ```
 nc -lnvp -8090
@@ -219,4 +227,5 @@ The setup can be fully seen down here.
 ![downshcat](Evidence/overall_setup_reverse_shell.png) Reverse shell setup  
 
 And just like this, we can see that we are now root in the target machine, reaching the end of the exploitation of this box.
+
 
