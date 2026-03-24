@@ -1,71 +1,9 @@
 ## Active Directory - Alessandro Loddo  
-
-Last edited byAlessandro Loddo
-Last updated time
+  
 ## Active Directory
 ## Architecture, Administration & Attack Techniques
-Created by Alessandro Loddo
-## March 2026
-March 24, 2026 1009 AM
-March 24, 2026 1013 AM
-Part 1 What is Active Directory?
-## Overview
-## Core Concepts
-## Domain
-Domain Controller DC
-Forest and Trees
-Organisational Units OUs
-## Objects
-## Schema
-Global Catalog GC
-## Trusts
-## Part 2 Key Protocols
-## Kerberos
-## The Kerberos Authentication Flow
-## NTLM
-## Active Directory - Alessandro Loddo1
 
-## LDAP
-## DNS
-## SMB
-## Part 3 Important Structures & Objects
-## Groups
-## Default Privileged Groups
-Service Principal Names SPNs
-Group Policy Objects GPOs
-ACLs and ACEs
-## Part 4 Enumeration
-## Tools
-PowerView
-BloodHound
-LDAP Queries (from Linux)
-Enum4Linux-ng
-CrackMapExec CME
-What to Look For
-## Part 5 Attack Techniques
-## Password Attacks
-## Password Spraying
-ASREP Roasting
-## Kerberoasting
-## Credential Attacks
-Pass-the-Hash PtH
-Pass-the-Ticket PtT
-Overpass-the-Hash
-LSASS Credential Dumping
-NTLM Relay Attacks
-Responder + NTLMrelayx
-## Delegation Attacks
-## Unconstrained Delegation
-## Constrained Delegation
-Resource-Based Constrained Delegation RBCD
-ACL Abuse
-DCSync
-## Golden Ticket
-## Silver Ticket
-GPO Abuse
-## Active Directory - Alessandro Loddo2
-
-Part 1: What is Active Directory?
+## Part 1: What is Active Directory?
 ## Overview
 Active Directory AD) is Microsoft's directory service for Windows domain
 networks. Introduced with Windows 2000 Server, it has become the backbone of
