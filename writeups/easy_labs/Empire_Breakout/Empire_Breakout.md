@@ -35,7 +35,7 @@ My approach start from enumerating port 80, and if nothing is found proceed to S
 
 Starting with port 80, I open the browser and check against any useful information.  
 ```
-http:192.168.1.54:80
+http://192.168.1.54:80
 ```
 Here I am welcomed by a default Debian page, which, apart from hinting to poor hygiene, does not reveal much, other than confirming the debian 1.4.51 version given by nmap.  
 
