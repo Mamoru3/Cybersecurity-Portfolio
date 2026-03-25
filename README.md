@@ -5,8 +5,8 @@ This repository is my cybersecurity learning portfolio, where you can find usefu
 
 ## Start here
 - **Notes / Wiki:**
-    - [My Shortened Cybersecurity Notes](notes/pentesting-shortened-notes-readme.md)
-    - [Linux Essentials for Cybersecurity](notes/linux-essentials-for-cybersecurity-readme.md)
+    - [Pentesting Methodology](notes/pentesting-methodology-readme.md)
+    - [Linux Essentials for Cybersecurity](notes/linux-essentials-for-pentesting-readme.md)
     - [How the Internet works](notes/how-the-internet-works.md)
     - [Cisco Packet Tracer helper](notes/cisco-packet-tracer-helper.md)
     - [Active Directory Summary and Hacking](notes/active-directory-summary-and-hacking.md)
