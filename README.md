@@ -11,6 +11,7 @@ This repository is my cybersecurity learning portfolio, where you can find usefu
     - [Cisco Packet Tracer helper](notes/cisco-packet-tracer-helper.md)
     - [Active Directory Summary and Hacking](notes/active-directory-summary-and-hacking.md)
     - [Updated Exploits Not Present In My Notes](notes/updated-exploits)
+    - [Web App Full Exploit Guide](notes/web-app-full-exploit-guide.md)
 - **Lab Writeups:** [Writeups Index](writeups/labs-readme.md)
 - **Templates:** [My Templates](templates/templates-readme.md)
 
