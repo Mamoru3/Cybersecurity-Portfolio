@@ -12,6 +12,7 @@ This repository is my cybersecurity learning portfolio, where you can find usefu
     - [Active Directory Summary and Hacking](notes/active-directory-summary-and-hacking.md)
     - [Updated Exploits Not Present In My Notes](notes/updated-exploits.md)
     - [Web App Full Exploit Guide](notes/web-app-full-exploit-guide.md)
+    - [SQL Complete Exploit Methodology](notes/sql-complete-exploit-methodology.md)
 - **Lab Writeups:** [Writeups Index](writeups/labs-readme.md)
 - **Templates:** [My Templates](templates/templates-readme.md)
 
